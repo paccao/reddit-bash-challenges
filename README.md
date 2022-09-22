@@ -31,3 +31,10 @@ How to search large directories fast:
 * `ag` "The Silver Searcher" considerably faster than grep
 * `rg` "Ripgrep", written in rust, faster than ag but uses more resources.
 `ag` and `rg` are probably more useful in day to day use because of their speed.
+
+How to run script in parent shell (for example to use cd in script but to act it in current shell)
+`source <script_name>`
+
+List processes with the `ps` command.
+[See more](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/)
+`ps -eo pid,user,stime,cmd`
