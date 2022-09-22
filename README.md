@@ -22,4 +22,12 @@ Redirection of output to /dev/null is the idiomatic bash way of saying lets hide
 
 How to search after a specific flag in the --help output or MAN page of a command:
 `man ls | grep -A 5 "\-FLAGTOSEARCHFOR"`
-* -A <NUM> shows following lines after a match, -B <NUM> shows preceding lines before each match
+* -A <NUM> shows following lines after a match
+* -B <NUM> shows preceding lines before each match
+* -C <NUM> shows preceding and following lines at a match
+
+How to search large directories fast:
+* `grep` is useful to learn
+* `ag` "The Silver Searcher" considerably faster than grep
+* `rg` "Ripgrep", written in rust, faster than ag but uses more resources.
+`ag` and `rg` are probably more useful in day to day use because of their speed.
