@@ -18,4 +18,8 @@ Use `set -o pipefail`, script fails on a single failed command in a pipeline ins
 
 A symlink is a symbolic Linux/ UNIX link that points to another file or folder on your computer or a connected file system. This is similar to a Windows shortcut.
 
-redirection of output to /dev/null is the idiomatic bash way of saying lets hide this output. Everything that gets directed to /dev/null gets deleted. For example `$(get_latest_version 2>/dev/null)`
+Redirection of output to /dev/null is the idiomatic bash way of saying lets hide this output. Everything that gets directed to /dev/null gets deleted. For example `$(get_latest_version 2>/dev/null)`
+
+How to search after a specific flag in the --help output or MAN page of a command:
+`man ls | grep -A 5 "\-FLAGTOSEARCHFOR"`
+* -A <NUM> shows following lines after a match, -B <NUM> shows preceding lines before each match
