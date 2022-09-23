@@ -38,3 +38,6 @@ How to run script in parent shell (for example to use cd in script but to act it
 List processes with the `ps` command.
 [See more](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/)
 `ps -eo pid,user,stime,cmd`
+
+The command `${#var}` returns the length of `var`
+The command `${var:pos:N}` returns N characters from `pos` onwards
