@@ -12,6 +12,6 @@ set -o pipefail
 initial_timestamp=$(date +%H:%M)
 echo $initial_timestamp
 
-ps -eo pid,user,stime,cmd
-#Perform Real-time Process Monitoring Using Watch Utility
-watch -n 1 'ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head'
+ps -aeo pid,user,stime,cmd | while read -r line; do
+	echo "$line" ;
+done > output.txt
