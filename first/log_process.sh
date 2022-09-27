@@ -20,7 +20,7 @@ set -o pipefail
 initial_timestamp=$(date +%s) #unix time format
 
 ps -aeo pid,user,start,comm --no-headers | while read -r line; do
-	pid=$(echo "$line" | grep -v ps | head -n1 | awk '{print $1}')
+	pid=$(echo "$line" | grep -v ps | awk '{print $1}')
 	process_start_timestamp=$(stat -c %Y /proc/$pid)
 	if [[ $process_start_timestamp > $initial_timestamp ]]; then
 		echo "___________________Success: $line" >&2
