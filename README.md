@@ -41,3 +41,9 @@ List processes with the `ps` command.
 
 The command `${#var}` returns the length of `var`
 The command `${var:pos:N}` returns N characters from `pos` onwards
+
+### How to print a column of grep output
+`docker images -a | grep "pattern" | awk '{print $3}'`
+
+* Then you can pass that as an argument to another command with xargs, for example:
+`docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi`

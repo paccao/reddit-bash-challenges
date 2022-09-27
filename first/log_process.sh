@@ -17,10 +17,10 @@ set -o pipefail
 #	then write that whole line to text file.
 #continue loop until output from `ps` has finished.
 
-initial_timestamp=$(date +%H:%M)
+initial_timestamp=$(date +%s) #unix time format
 echo $initial_timestamp
 
-ps -aeo pid,user,start,cmd | while read -r line; do
+ps -aeo pid,user,start | while read -r line; do
 	echo "$line"
 done 
 #done > temp.txt
