@@ -26,13 +26,6 @@ ps -aeo pid,user,start,comm --no-headers | while read -r line; do
 		echo "Process: $process_start_timestamp - Initial: $initial_timestamp" >&2
 		echo $line
 	fi
-done
+done > log.txt
  
-echo "Initial timestamp: $initial_timestamp"
-#done > temp.txt
-
-## How to print each character of a line
-#echo "$line" | sed -e 's/\(.\)/\1\n/g'
-
-## stats of specified process, including starttime with EPOCH format
-#`stat -c %Y /proc/($PID)
+echo "Initial timestamp: $initial_timestamp" >&2
