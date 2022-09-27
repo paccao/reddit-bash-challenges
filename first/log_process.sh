@@ -18,13 +18,20 @@ set -o pipefail
 #continue loop until output from `ps` has finished.
 
 initial_timestamp=$(date +%s) #unix time format
-echo $initial_timestamp
 
-ps -aeo pid,user,start | while read -r line; do
-	echo "$line"
-	ps -eo pid,user,etime | awk '{print $3}'
-done 
+ps -aeo pid,user,start,comm | while read -r line; do
+	pid=$(echo "$line" | grep -v ps | awk '{print $1}')
+	process_start_timestamp=$(stat -c %Y /proc/$pid)
+	if [[ $process_start_timestamp > $initial_timestamp ]]; then
+		echo "___________________Success: $line"
+	fi
+done
+ 
+echo "Initial timestamp: $initial_timestamp"
 #done > temp.txt
 
 ## How to print each character of a line
 #echo "$line" | sed -e 's/\(.\)/\1\n/g'
+
+## stats of specified process, including starttime with EPOCH format
+#`stat -c %Y /proc/($PID)
