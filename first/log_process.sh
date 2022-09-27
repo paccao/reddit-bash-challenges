@@ -23,7 +23,7 @@ ps -aeo pid,user,start,comm --no-headers | while read -r line; do
 	pid=$(echo "$line" | grep -v ps | awk '{print $1}')
 	process_start_timestamp=$(stat -c %Y /proc/$pid)
 	if [[ $process_start_timestamp > $initial_timestamp ]]; then
-		echo "___________________Success: $line" >&2
+		echo "Process: $process_start_timestamp - Initial: $initial_timestamp" >&2
 		echo $line
 	fi
 done
