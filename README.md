@@ -47,3 +47,9 @@ The command `${var:pos:N}` returns N characters from `pos` onwards
 
 * Then you can pass that as an argument to another command with xargs, for example:
 `docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi`
+
+How to print each character of a line
+echo "$line" | sed -e 's/\(.\)/\1\n/g'
+
+stats of specified process, including starttime with EPOCH format
+`stat -c %Y /proc/($PID)
