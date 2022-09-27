@@ -22,6 +22,7 @@ echo $initial_timestamp
 
 ps -aeo pid,user,start | while read -r line; do
 	echo "$line"
+	ps -eo pid,user,etime | awk '{print $3}'
 done 
 #done > temp.txt
 
