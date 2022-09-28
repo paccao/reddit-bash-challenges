@@ -20,41 +20,41 @@ A symlink is a symbolic Linux/ UNIX link that points to another file or folder o
 
 Redirection of output to /dev/null is the idiomatic bash way of saying lets hide this output. Everything that gets directed to /dev/null gets deleted. For example `$(get_latest_version 2>/dev/null)`
 
-How to search after a specific flag in the --help output or MAN page of a command:
+How to search after a specific flag in the --help output or MAN page of a command: <br/>
 `man ls | grep -A 5 "\-FLAGTOSEARCHFOR"`
 * -A <NUM> shows following lines after a match
 * -B <NUM> shows preceding lines before each match
 * -C <NUM> shows preceding and following lines at a match
 
-How to search large directories fast:
-* `grep` is useful to learn
-* `ag` "The Silver Searcher" considerably faster than grep
-* `rg` "Ripgrep", written in rust, faster than ag but uses more resources.
-`ag` and `rg` are probably more useful in day to day use because of their speed.
+How to search large directories fast: <br/>
+* `grep` is useful to learn <br/>
+* `ag` "The Silver Searcher" considerably faster than grep <br/>
+* `rg` "Ripgrep", written in rust, faster than ag but uses more resources. <br/>
+`ag` and `rg` are probably more useful in day to day use because of their speed. <br/>
 
-How to run script in parent shell (for example to use cd in script but to act it in current shell)
+How to run script in parent shell (for example to use cd in script but to act it in current shell) <br/>
 `source <script_name>`
 
-List processes with the `ps` command.
+List processes with the `ps` command. <br/>
 [See more](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/)
 `ps -eo pid,user,stime,cmd`
 
 The command `${#var}` returns the length of `var`
 The command `${var:pos:N}` returns N characters from `pos` onwards
 
-### How to print a column of grep output
+### How to print a column of grep output <br/>
 `docker images -a | grep "pattern" | awk '{print $3}'`
 
-* Then you can pass that as an argument to another command with xargs, for example:
+* Then you can pass that as an argument to another command with xargs, for example: <br/>
 `docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi`
 
-How to print each character of a line
-echo "$line" | sed -e 's/\(.\)/\1\n/g'
+### How to print each character of a line <br/>
+`echo "$line" | sed -e 's/\(.\)/\1\n/g'`
 
-stats of specified process, including starttime with EPOCH format
-`stat -c %Y /proc/($PID)
+### stats of specified process, including starttime with EPOCH format <br/>
+`stat -c %Y /proc/($PID)`
 
-setting a default value if an argument does not exist.
-`set +u (make unbound variables not crash)`
-`sleep_time="${1:-$default_sleep_time}"`
+### setting a default value if an argument does not exist. <br/>
+`set +u (make unbound variables not crash)` <br/>
+`sleep_time="${1:-$default_sleep_time}"` <br/>
 `set -u (set script to crash at unbound vars again`
