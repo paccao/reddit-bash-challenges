@@ -3,29 +3,26 @@
 set -eu
 set -o pipefail
 
-# take timestamp when script is launched
-# find list of processes
-# filter said list by timestamps when they launched
-# write to text file
-# loop it
+initial_timestamp=$(date +%s) #EPOCH time format
+default_sleep_time=1
 
-## New solution
-#save timestamp when script started
-#read each line of output of `ps`
-#get deltaTime of script start time to now
-#if the value in the `etimes` column is greater than scriptStartElipsedTime >
-#	then write that whole line to text file.
-#continue loop until output from `ps` has finished.
+set +u
+sleep_time="${1:-$default_sleep_time}"
 
-initial_timestamp=$(date +%s) #unix time format
+echo "Status: arg: [$1]" 1>&2
+echo "Status: sleep_time: [$sleep_time]" 1>&2
+
+set -u
+
+sleep $sleep_time
 
 ps -aeo pid,user,start,comm --no-headers | while read -r line; do
 	pid=$(echo "$line" | grep -v ps | awk '{print $1}')
 	process_start_timestamp=$(stat -c %Y /proc/$pid)
 	if [[ $process_start_timestamp > $initial_timestamp ]]; then
-		echo "Process: $process_start_timestamp - Initial: $initial_timestamp" >&2
+		echo "Status: Process which started after script start found. Process timestamp: $process_start_timestamp - Initial timestamp: $initial_timestamp (In EPOCH format)" >&2
 		echo $line
 	fi
-done > log.txt
+done > output.txt
  
-echo "Initial timestamp: $initial_timestamp" >&2
+echo "Initial timestamp: $initial_timestamp"
