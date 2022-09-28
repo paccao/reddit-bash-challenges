@@ -53,3 +53,8 @@ echo "$line" | sed -e 's/\(.\)/\1\n/g'
 
 stats of specified process, including starttime with EPOCH format
 `stat -c %Y /proc/($PID)
+
+setting a default value if an argument does not exist.
+`set +u (make unbound variables not crash)`
+`sleep_time="${1:-$default_sleep_time}"`
+`set -u (set script to crash at unbound vars again`
